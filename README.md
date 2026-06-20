@@ -4,6 +4,10 @@ Enterprise Design-to-Production Intelligence Platform for Web Applications, Mobi
 
 DMW Product Engineering OS is an independent open source project created and maintained by Davis Materialworks. It transforms design assets, product concepts, user experiences, and design systems into production-ready product engineering guidance, review systems, benchmarks, and implementation workflows.
 
+## Independent Project Notice
+
+DMW Product Engineering OS is an independent open-source initiative created by Davis Materialworks. The project is not affiliated with or endorsed by Adobe. Adobe XD support exists because Adobe Creative Cloud tools have been part of our day-to-day design and product development workflow for many years, and this framework was originally developed to improve those real-world processes.
+
 This repository is not an Adobe product, plugin, exporter, certification program, or official workflow. It is not affiliated with, endorsed by, sponsored by, authorized by, or associated with Adobe Inc. Adobe XD is the initial supported design source because it reflects real Davis Materialworks workflows and existing design assets. See [DISCLAIMER.md](DISCLAIMER.md) and [TRADEMARK.md](TRADEMARK.md).
 
 ## Mission
