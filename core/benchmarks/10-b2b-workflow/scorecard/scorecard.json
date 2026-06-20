@@ -1,0 +1,15 @@
+{
+  "categories": {
+    "design_understanding": "0-100",
+    "ux_quality": "0-100",
+    "accessibility": "0-100",
+    "architecture": "0-100",
+    "design_system": "0-100",
+    "maintainability": "0-100",
+    "performance": "0-100",
+    "security": "0-100",
+    "testability": "0-100"
+  },
+  "passing_score": 90,
+  "accessibility_floor": 95
+}

@@ -1,0 +1,136 @@
+{
+  "id": "mobile-app",
+  "title": "Mobile Habit and Task App",
+  "industry": "Consumer Mobile",
+  "adobe_xd_design_description": "A mobile XD app with onboarding, bottom navigation, daily task dashboard, streak visualization, gesture-driven completion, settings, offline state, push notification opt-in, and animated transitions. Includes iOS and Android-sized artboards with safe-area considerations.",
+  "expected_design_system": {
+    "tokens": [
+      "safe-area.padding",
+      "touch-target.minimum",
+      "streak.active",
+      "streak.missed",
+      "surface.sheet",
+      "motion.complete"
+    ],
+    "typography": [
+      "mobile.heading",
+      "mobile.body",
+      "mobile.caption"
+    ],
+    "motion": [
+      "complete.feedback",
+      "tab.transition",
+      "onboarding.progress"
+    ],
+    "modes": [
+      "light",
+      "dark",
+      "reduced-motion"
+    ]
+  },
+  "expected_component_inventory": [
+    {
+      "component": "OnboardingPager",
+      "industry": "Consumer Mobile",
+      "accessibility": [
+        "screen reader page state",
+        "skip option",
+        "dynamic type"
+      ],
+      "performance": [
+        "preload adjacent slide",
+        "low-cost animation"
+      ],
+      "testing": [
+        "swipe",
+        "skip",
+        "reduced motion"
+      ]
+    },
+    {
+      "component": "HabitCompletionControl",
+      "industry": "Consumer Mobile",
+      "accessibility": [
+        "button alternative to gesture",
+        "haptic not required",
+        "state announcement"
+      ],
+      "performance": [
+        "optimistic update",
+        "offline queue"
+      ],
+      "testing": [
+        "tap",
+        "gesture",
+        "offline retry",
+        "undo"
+      ]
+    },
+    {
+      "component": "SettingsList",
+      "industry": "Consumer Mobile",
+      "accessibility": [
+        "native controls",
+        "large text support",
+        "clear grouping"
+      ],
+      "performance": [
+        "no heavy re-render",
+        "platform conventions"
+      ],
+      "testing": [
+        "toggle",
+        "permissions",
+        "dynamic type"
+      ]
+    }
+  ],
+  "expected_architecture": {
+    "frontend": [
+      "native navigation stack",
+      "bottom tabs",
+      "safe-area aware layout",
+      "offline-first state"
+    ],
+    "backend": [
+      "sync endpoint",
+      "notification preferences",
+      "account deletion flow"
+    ],
+    "state": [
+      "local completion cache",
+      "sync queue",
+      "notification permission state"
+    ],
+    "security": [
+      "secure token storage",
+      "privacy-preserving analytics",
+      "account deletion confirmation"
+    ]
+  },
+  "expected_accessibility_findings": [
+    "Gestures need non-gesture alternatives.",
+    "All touch targets must meet platform minimums.",
+    "Animations must respect reduced-motion settings.",
+    "Dynamic type must not clip labels.",
+    "Permission prompts need clear value and non-blocking fallback."
+  ],
+  "expected_code_quality_metrics": {
+    "typescript": "typed navigation params and offline actions",
+    "tests": [
+      "component tests",
+      "gesture fallback",
+      "offline sync",
+      "screen-reader labels"
+    ],
+    "performance": [
+      "smooth 60fps animations",
+      "bounded list rendering",
+      "fast cold start"
+    ],
+    "maintainability": [
+      "platform-specific code isolated",
+      "tokens shared across screens"
+    ]
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "id": "ai-product",
+  "title": "AI Product Prompt Workspace",
+  "industry": "AI Products",
+  "adobe_xd_design_description": "An XD AI workspace with prompt editor, model selector, streaming response panel, citation sidebar, file upload, evaluation history, safety warning states, empty onboarding, and usage limits.",
+  "expected_design_system": {
+    "tokens": [
+      "ai.prompt.surface",
+      "ai.response.surface",
+      "ai.citation.border",
+      "usage.warning",
+      "safety.warning",
+      "focus.ring"
+    ],
+    "typography": [
+      "prompt.input",
+      "response.body",
+      "citation.meta",
+      "code.inline"
+    ],
+    "motion": [
+      "streaming.cursor",
+      "sidebar.reveal"
+    ],
+    "modes": [
+      "light",
+      "dark",
+      "reduced-motion"
+    ]
+  },
+  "expected_component_inventory": [
+    {
+      "component": "PromptComposer",
+      "industry": "AI Products",
+      "accessibility": [
+        "label",
+        "keyboard submit alternative",
+        "file upload names"
+      ],
+      "performance": [
+        "debounced autosave",
+        "bounded textarea growth"
+      ],
+      "testing": [
+        "submit",
+        "disabled",
+        "upload error",
+        "token limit"
+      ]
+    },
+    {
+      "component": "StreamingResponse",
+      "industry": "AI Products",
+      "accessibility": [
+        "live region restraint",
+        "stop generation button",
+        "copy feedback"
+      ],
+      "performance": [
+        "incremental rendering",
+        "virtualize long output"
+      ],
+      "testing": [
+        "stream",
+        "stop",
+        "error",
+        "empty"
+      ]
+    },
+    {
+      "component": "CitationSidebar",
+      "industry": "AI Products",
+      "accessibility": [
+        "landmark",
+        "source labels",
+        "keyboard links"
+      ],
+      "performance": [
+        "lazy source previews",
+        "memoized source list"
+      ],
+      "testing": [
+        "open citation",
+        "missing source",
+        "keyboard navigation"
+      ]
+    }
+  ],
+  "expected_architecture": {
+    "frontend": [
+      "stream-aware state",
+      "file upload boundary",
+      "model capability map"
+    ],
+    "backend": [
+      "generation API",
+      "moderation/safety API",
+      "retrieval citations",
+      "usage metering"
+    ],
+    "state": [
+      "stream lifecycle",
+      "draft prompt",
+      "selected model",
+      "evaluation history"
+    ],
+    "security": [
+      "file type validation",
+      "prompt injection warnings",
+      "data retention controls"
+    ]
+  },
+  "expected_accessibility_findings": [
+    "Streaming output must not overwhelm assistive tech.",
+    "Stop generation must be always reachable by keyboard.",
+    "Model limits and safety warnings need clear text.",
+    "Citation links require descriptive names.",
+    "File upload states need progress, errors, and removal controls."
+  ],
+  "expected_code_quality_metrics": {
+    "typescript": "typed stream events and model capabilities",
+    "tests": [
+      "stream lifecycle",
+      "stop generation",
+      "file upload errors",
+      "axe scan"
+    ],
+    "performance": [
+      "bounded response rendering",
+      "fast composer interaction",
+      "deferred citation previews"
+    ],
+    "maintainability": [
+      "provider-neutral generation boundary",
+      "separate safety review UI"
+    ]
+  }
+}

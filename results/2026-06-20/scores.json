@@ -1,0 +1,204 @@
+{
+  "results": [
+    {
+      "project": "01-dashboard-saas",
+      "title": "Dashboard SaaS",
+      "overall": 93,
+      "scores": {
+        "design_understanding": 39,
+        "ux_quality": 100,
+        "accessibility": 100,
+        "architecture": 100,
+        "design_system": 100,
+        "maintainability": 100,
+        "performance": 100,
+        "security": 100,
+        "testability": 100
+      },
+      "status": "pass",
+      "previous_score": 93,
+      "delta": 0,
+      "trend": "unchanged"
+    },
+    {
+      "project": "02-ecommerce",
+      "title": "Ecommerce",
+      "overall": 94,
+      "scores": {
+        "design_understanding": 44,
+        "ux_quality": 100,
+        "accessibility": 100,
+        "architecture": 100,
+        "design_system": 100,
+        "maintainability": 100,
+        "performance": 100,
+        "security": 100,
+        "testability": 100
+      },
+      "status": "pass",
+      "previous_score": 94,
+      "delta": 0,
+      "trend": "unchanged"
+    },
+    {
+      "project": "03-fintech",
+      "title": "Fintech",
+      "overall": 94,
+      "scores": {
+        "design_understanding": 44,
+        "ux_quality": 100,
+        "accessibility": 100,
+        "architecture": 100,
+        "design_system": 100,
+        "maintainability": 100,
+        "performance": 100,
+        "security": 100,
+        "testability": 100
+      },
+      "status": "pass",
+      "previous_score": 94,
+      "delta": 0,
+      "trend": "unchanged"
+    },
+    {
+      "project": "04-healthcare",
+      "title": "Healthcare",
+      "overall": 94,
+      "scores": {
+        "design_understanding": 42,
+        "ux_quality": 100,
+        "accessibility": 100,
+        "architecture": 100,
+        "design_system": 100,
+        "maintainability": 100,
+        "performance": 100,
+        "security": 100,
+        "testability": 100
+      },
+      "status": "pass",
+      "previous_score": 94,
+      "delta": 0,
+      "trend": "unchanged"
+    },
+    {
+      "project": "05-mobile-app",
+      "title": "Mobile App",
+      "overall": 94,
+      "scores": {
+        "design_understanding": 44,
+        "ux_quality": 100,
+        "accessibility": 100,
+        "architecture": 100,
+        "design_system": 100,
+        "maintainability": 100,
+        "performance": 100,
+        "security": 100,
+        "testability": 100
+      },
+      "status": "pass",
+      "previous_score": 94,
+      "delta": 0,
+      "trend": "unchanged"
+    },
+    {
+      "project": "06-admin-panel",
+      "title": "Admin Panel",
+      "overall": 93,
+      "scores": {
+        "design_understanding": 39,
+        "ux_quality": 100,
+        "accessibility": 100,
+        "architecture": 100,
+        "design_system": 100,
+        "maintainability": 100,
+        "performance": 100,
+        "security": 100,
+        "testability": 100
+      },
+      "status": "pass",
+      "previous_score": 93,
+      "delta": 0,
+      "trend": "unchanged"
+    },
+    {
+      "project": "07-ai-chat",
+      "title": "AI Chat",
+      "overall": 93,
+      "scores": {
+        "design_understanding": 39,
+        "ux_quality": 100,
+        "accessibility": 100,
+        "architecture": 100,
+        "design_system": 100,
+        "maintainability": 100,
+        "performance": 100,
+        "security": 100,
+        "testability": 100
+      },
+      "status": "pass",
+      "previous_score": 93,
+      "delta": 0,
+      "trend": "unchanged"
+    },
+    {
+      "project": "08-design-system",
+      "title": "Design System",
+      "overall": 94,
+      "scores": {
+        "design_understanding": 47,
+        "ux_quality": 100,
+        "accessibility": 100,
+        "architecture": 100,
+        "design_system": 100,
+        "maintainability": 100,
+        "performance": 100,
+        "security": 100,
+        "testability": 100
+      },
+      "status": "pass",
+      "previous_score": 94,
+      "delta": 0,
+      "trend": "unchanged"
+    },
+    {
+      "project": "09-marketing-site",
+      "title": "Marketing Site",
+      "overall": 93,
+      "scores": {
+        "design_understanding": 37,
+        "ux_quality": 100,
+        "accessibility": 100,
+        "architecture": 100,
+        "design_system": 100,
+        "maintainability": 100,
+        "performance": 100,
+        "security": 100,
+        "testability": 100
+      },
+      "status": "pass",
+      "previous_score": 93,
+      "delta": 0,
+      "trend": "unchanged"
+    },
+    {
+      "project": "10-b2b-workflow",
+      "title": "B2B Workflow",
+      "overall": 94,
+      "scores": {
+        "design_understanding": 50,
+        "ux_quality": 100,
+        "accessibility": 100,
+        "architecture": 100,
+        "design_system": 100,
+        "maintainability": 100,
+        "performance": 100,
+        "security": 100,
+        "testability": 100
+      },
+      "status": "pass",
+      "previous_score": 94,
+      "delta": 0,
+      "trend": "unchanged"
+    }
+  ]
+}

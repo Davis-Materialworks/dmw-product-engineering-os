@@ -1,0 +1,88 @@
+{
+  "id": "07-ai-chat",
+  "title": "AI Chat",
+  "source_options": [
+    "own Adobe XD projects",
+    "old Adobe XD files",
+    "personal projects",
+    "public UI challenges",
+    "recreated interfaces"
+  ],
+  "design_description": "Adobe XD benchmark for AI Chat: a representative ai product interface with core screens, responsive behavior, component states, accessibility concerns, and enterprise review expectations.",
+  "expected": {
+    "components": [
+      "PromptComposer",
+      "StreamingResponse",
+      "CitationSidebar",
+      "ModelSelector",
+      "SafetyNotice"
+    ],
+    "accessibility": {
+      "score": "95+",
+      "requirements": [
+        "WCAG 2.2 AA baseline",
+        "keyboard path",
+        "screen reader names",
+        "visible focus",
+        "not color-only",
+        "responsive reflow"
+      ]
+    },
+    "architecture": {
+      "pattern": "Hexagonal Architecture",
+      "requirements": [
+        "clear domain boundaries",
+        "typed component contracts",
+        "state model",
+        "test seams",
+        "security review when relevant"
+      ]
+    },
+    "design_system": {
+      "maturity": 4,
+      "requirements": [
+        "semantic tokens",
+        "component variants",
+        "state coverage",
+        "documentation",
+        "drift detection"
+      ]
+    },
+    "ux": {
+      "score": "90+",
+      "requirements": [
+        "clear primary action",
+        "low cognitive load",
+        "error and recovery states",
+        "intent preserved",
+        "journey coverage"
+      ]
+    },
+    "security": [
+      "least privilege where relevant",
+      "sensitive data handling",
+      "safe API exposure",
+      "auditability for enterprise actions"
+    ],
+    "code_quality": {
+      "tests": [
+        "component behavior",
+        "visual regression",
+        "accessibility scan",
+        "critical e2e journey"
+      ],
+      "performance": [
+        "no avoidable layout shift",
+        "bounded rendering",
+        "optimized assets",
+        "responsive interaction latency"
+      ],
+      "maintainability": [
+        "no visual-only component names",
+        "no raw token drift",
+        "small reviewable modules",
+        "documented tradeoffs"
+      ]
+    }
+  }
+}

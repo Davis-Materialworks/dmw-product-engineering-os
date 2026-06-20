@@ -1,0 +1,136 @@
+{
+  "id": "fintech",
+  "title": "Fintech Account and Transfer Flow",
+  "industry": "Fintech",
+  "adobe_xd_design_description": "An XD banking dashboard with account balances, transaction search, transfer wizard, KYC banner, risk warnings, confirmation review, receipt screen, masked sensitive data, and fraud alert states.",
+  "expected_design_system": {
+    "tokens": [
+      "money.positive",
+      "money.negative",
+      "risk.warning",
+      "risk.critical",
+      "surface.secure-panel",
+      "focus.ring"
+    ],
+    "typography": [
+      "money.amount",
+      "heading.flow",
+      "body.legal",
+      "caption.disclosure"
+    ],
+    "motion": [
+      "step.transition",
+      "confirmation.emphasis"
+    ],
+    "modes": [
+      "light",
+      "high-contrast"
+    ]
+  },
+  "expected_component_inventory": [
+    {
+      "component": "SensitiveValue",
+      "industry": "Fintech",
+      "accessibility": [
+        "masked state label",
+        "reveal button accessible name"
+      ],
+      "performance": [
+        "no unnecessary persistence",
+        "stable formatting"
+      ],
+      "testing": [
+        "mask",
+        "reveal",
+        "copy disabled when required"
+      ]
+    },
+    {
+      "component": "TransferWizard",
+      "industry": "Fintech",
+      "accessibility": [
+        "step names",
+        "error recovery",
+        "confirmation summary"
+      ],
+      "performance": [
+        "server validation",
+        "idempotent submit"
+      ],
+      "testing": [
+        "validation",
+        "limit error",
+        "confirmation",
+        "duplicate submit prevention"
+      ]
+    },
+    {
+      "component": "TransactionSearch",
+      "industry": "Fintech",
+      "accessibility": [
+        "results count",
+        "filter labels",
+        "table semantics"
+      ],
+      "performance": [
+        "server pagination",
+        "debounced search"
+      ],
+      "testing": [
+        "empty",
+        "loading",
+        "filter",
+        "export permission"
+      ]
+    }
+  ],
+  "expected_architecture": {
+    "frontend": [
+      "flow state machine",
+      "server-authoritative balances",
+      "typed money formatting"
+    ],
+    "backend": [
+      "transfer intent API",
+      "KYC status API",
+      "audit event stream",
+      "fraud checks"
+    ],
+    "state": [
+      "idempotency key",
+      "confirmation state",
+      "masked reveal state"
+    ],
+    "security": [
+      "least privilege",
+      "audit logging",
+      "PII redaction",
+      "secure defaults"
+    ]
+  },
+  "expected_accessibility_findings": [
+    "Risk warnings require text and icon, not color alone.",
+    "Financial amounts need clear accessible labels and currency.",
+    "Transfer confirmation must be reviewable before submit.",
+    "Session timeout and error recovery must be explicit.",
+    "Masked values need accessible reveal/hide controls."
+  ],
+  "expected_code_quality_metrics": {
+    "typescript": "branded money and account identifiers",
+    "tests": [
+      "transfer state machine",
+      "accessibility scan",
+      "idempotency",
+      "risk warning rendering"
+    ],
+    "performance": [
+      "fast transaction filtering",
+      "server pagination",
+      "no client-only balance authority"
+    ],
+    "maintainability": [
+      "domain services separate from UI",
+      "centralized formatting"
+    ]
+  }
+}

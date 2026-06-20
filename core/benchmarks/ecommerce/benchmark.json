@@ -1,0 +1,137 @@
+{
+  "id": "ecommerce",
+  "title": "E-commerce Product Discovery and Checkout",
+  "industry": "E-commerce",
+  "adobe_xd_design_description": "A responsive XD shopping flow with product listing, filters, product detail, cart drawer, checkout steps, coupon entry, payment summary, inventory warnings, and order confirmation. The design includes mobile and desktop artboards, product image assets, sale badges, and form states.",
+  "expected_design_system": {
+    "tokens": [
+      "price.sale",
+      "price.regular",
+      "inventory.warning",
+      "surface.product-card",
+      "action.checkout.background",
+      "focus.ring"
+    ],
+    "typography": [
+      "heading.product",
+      "body.description",
+      "label.price",
+      "caption.promo"
+    ],
+    "motion": [
+      "cart.drawer",
+      "filter.expand",
+      "checkout.step-transition"
+    ],
+    "modes": [
+      "light",
+      "high-contrast"
+    ]
+  },
+  "expected_component_inventory": [
+    {
+      "component": "ProductCard",
+      "industry": "E-commerce",
+      "accessibility": [
+        "image alt",
+        "price accessible text",
+        "sale not color-only"
+      ],
+      "performance": [
+        "responsive images",
+        "lazy below-fold media"
+      ],
+      "testing": [
+        "sale",
+        "out of stock",
+        "wishlist",
+        "keyboard activation"
+      ]
+    },
+    {
+      "component": "FilterPanel",
+      "industry": "E-commerce",
+      "accessibility": [
+        "fieldset groups",
+        "clear labels",
+        "count updates"
+      ],
+      "performance": [
+        "debounced updates",
+        "URL-backed filters"
+      ],
+      "testing": [
+        "multi-select",
+        "clear all",
+        "mobile sheet"
+      ]
+    },
+    {
+      "component": "CheckoutStep",
+      "industry": "E-commerce",
+      "accessibility": [
+        "stepper semantics",
+        "form errors",
+        "focus first invalid field"
+      ],
+      "performance": [
+        "minimal client JavaScript",
+        "defer payment SDK"
+      ],
+      "testing": [
+        "validation",
+        "coupon error",
+        "payment failure",
+        "confirmation"
+      ]
+    }
+  ],
+  "expected_architecture": {
+    "frontend": [
+      "route segments for listing, product detail, cart, checkout",
+      "server-rendered product data",
+      "typed checkout forms"
+    ],
+    "backend": [
+      "cart API",
+      "inventory check",
+      "coupon validation",
+      "payment intent boundary"
+    ],
+    "state": [
+      "cart state persisted safely",
+      "checkout step state",
+      "URL filters"
+    ],
+    "security": [
+      "server-side price calculation",
+      "PCI boundary",
+      "payment error redaction"
+    ]
+  },
+  "expected_accessibility_findings": [
+    "Checkout errors must be programmatically associated with fields.",
+    "Cart drawer must be keyboard and screen-reader operable.",
+    "Sale and inventory status cannot depend only on color.",
+    "Mobile filters require focus management and Escape/back behavior.",
+    "Product images need meaningful alt text or decorative treatment."
+  ],
+  "expected_code_quality_metrics": {
+    "typescript": "schema-validated checkout forms and cart item contracts",
+    "tests": [
+      "checkout e2e",
+      "axe scan",
+      "visual diff",
+      "payment failure path"
+    ],
+    "performance": [
+      "optimized product imagery",
+      "deferred payment SDK",
+      "fast filter response"
+    ],
+    "maintainability": [
+      "separate pricing domain logic",
+      "reusable form field primitives"
+    ]
+  }
+}
