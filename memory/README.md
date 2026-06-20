@@ -1,10 +1,12 @@
 # Memory
 
-Root-level memory documentation points to the canonical memory systems used by the platform.
+Memory files live under `knowledge/`. This directory is preserved for future memory indexing tooling.
 
-Use:
+Canonical locations:
+- ADRs: `knowledge/adrs/`
+- Decisions: `knowledge/decisions/`
+- Design intent: `knowledge/design-intent/`
+- Evolution & lessons learned: `knowledge/evolution/`
+- Failures: `knowledge/failures/`
 
-- `core/memory/` for agent-independent ADRs, decisions, and design intent.
-- `knowledge/decisions/` for decision memory.
-- `knowledge/design-intent/` for design intent memory.
-- `knowledge/evolution/` for lessons learned and continuous improvement.
+Use `knowledge/` for all durable decision and design-intent records. The `memory/` directory is reserved for future tooling that may aggregate, index, or cross-reference these records automatically.

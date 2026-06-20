@@ -1,0 +1,46 @@
+# dmw-audit .gitignore
+# Covers: Python bytecode/cache, macOS, IDE config, logs, environment files, secrets, build artifacts, and Windows cruft.
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# macOS
+.DS_Store
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Environment and secrets
+.env*
+!.env.example
+
+# Certificates and keys
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+
+# Build artifacts
+node_modules/
+.next/
+dist/
+build/
+coverage/
+
+# Credentials and secrets (broad patterns)
+credentials*
+*secret*
+*token*
+
+# OS
+Thumbs.db

@@ -10,7 +10,7 @@ The `main` branch is the active supported version unless a separate release bran
 
 If you find a security issue, please do not publish exploit details in a public issue.
 
-Report security concerns through Davis Materialworks' official contact channels or by opening a minimal public issue that requests a private maintainer contact path without disclosing sensitive details.
+Report vulnerabilities privately to **security@davismaterialworks.com**. We will acknowledge within 5 business days. Please do not open public issues for security vulnerabilities.
 
 Include:
 
@@ -19,6 +19,14 @@ Include:
 - Potential impact
 - Reproduction steps when safe to share
 - Suggested mitigation if known
+
+### Safe Harbor
+
+We will not pursue legal action against researchers who follow this disclosure policy for good-faith reports. We consider security research conducted in accordance with this policy to be:
+
+- Authorized under applicable anti-hacking laws
+- Exempt from restrictions in our Terms of Service that would otherwise prohibit such activity
+- Conducted in good faith when you give us reasonable time to address the issue before public disclosure
 
 ## Security Scope
 

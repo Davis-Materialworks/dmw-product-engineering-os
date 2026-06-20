@@ -4,7 +4,7 @@
 Long forms without grouping, defaults, progress, validation, or save/resume create abandonment.
 
 ## Detection Pattern
-Look for this in XD artboards, prototypes, component states, screenshots, and generated UI.
+Inspect XD artboards for forms with 10+ visible fields on a single screen without section dividers, step indicators, or progressive disclosure. Count fields against the viewport height — if scrolling is required before the user knows how many steps remain, flag it. Check whether required vs. optional fields are visually differentiated and whether smart defaults pre-fill any inputs.
 
 ## Correction Strategy
 - Preserve the user goal.

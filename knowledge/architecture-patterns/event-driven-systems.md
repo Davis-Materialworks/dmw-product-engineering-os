@@ -7,10 +7,10 @@ Use when workflows are asynchronous, audit-heavy, integration-heavy, or require 
 Avoid when request-response flows are clearer, safer, and easier to operate.
 
 ## XD-to-Code Application
-- Map XD screens to product domains before creating folders.
-- Keep generic UI primitives separate from domain components.
-- Preserve design intent and data ownership boundaries.
-- Define testing seams at module, use-case, or adapter boundaries.
+- Trace XD user interactions (clicks, form submissions, navigation) to domain events: each meaningful action emits an event.
+- Identify async workflows from XD screens that show loading states, background processing, or real-time updates.
+- Map XD notification patterns (toasts, banners, status indicators) to event subscribers that update UI independently.
+- Design event schemas from XD data shapes flowing between screens, not from database tables.
 
 ## Review Questions
 - Does this pattern reduce complexity for this project?

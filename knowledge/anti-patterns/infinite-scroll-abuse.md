@@ -4,7 +4,7 @@
 Infinite scroll is harmful when users need position, comparison, selection, export, or completion.
 
 ## Detection Pattern
-Look for this in XD artboards, prototypes, component states, screenshots, and generated UI.
+Identify XD screens where content extends past the viewport without pagination controls, a visible item count, a search/filter mechanism, or a "back to top" affordance. Flag any infinite-scroll list that lacks a footer, making it impossible to reach footer links. Check whether the XD flow includes comparison, selection across pages, or export actions — all of which infinite scroll undermines.
 
 ## Correction Strategy
 - Preserve the user goal.

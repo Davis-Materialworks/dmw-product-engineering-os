@@ -1,77 +1,162 @@
 {
   "components": [
-    "Button",
-    "Card",
+    "AppShell",
+    "MetricCard",
     "DataTable",
     "FilterPanel",
     "ExportAction",
-    "AnalyticsWidget"
+    "NotificationDrawer",
+    "SkeletonLoader",
+    "ToastNotification",
+    "KpiGrid",
+    "TrendChart",
+    "SavedFilterPreset",
+    "StatusBadge",
+    "BulkActionBar",
+    "SparklineWidget"
   ],
+  "design_tokens": {
+    "colors": [
+      "surface.canvas: #F8FAFC",
+      "surface.sidebar: #1E293B",
+      "surface.card: #FFFFFF",
+      "text.primary: #0F172A",
+      "text.secondary: #64748B",
+      "action.primary.bg: #2563EB",
+      "action.primary.hover: #1D4ED8",
+      "feedback.success: #16A34A",
+      "feedback.warning: #F59E0B",
+      "feedback.danger: #DC2626",
+      "focus.ring: #3B82F6"
+    ],
+    "typography": [
+      "display.metric: 32px/1.1, 700, JetBrains Mono",
+      "heading.page: 24px/1.3, 700, Inter",
+      "heading.section: 18px/1.3, 600, Inter",
+      "body.default: 14px/1.5, 400, Inter",
+      "label.table: 12px/1.4, 500, Inter",
+      "caption.meta: 11px/1.4, 400, Inter"
+    ],
+    "spacing": [
+      "space.xs: 4px",
+      "space.sm: 8px",
+      "space.md: 16px",
+      "space.lg: 24px",
+      "space.xl: 32px",
+      "space.2xl: 48px"
+    ],
+    "radius": [
+      "radius.card: 8px",
+      "radius.button: 6px",
+      "radius.badge: 9999px"
+    ],
+    "shadows": [
+      "shadow.card: 0 1px 3px rgba(0,0,0,0.1)",
+      "shadow.drawer: -4px 0 24px rgba(0,0,0,0.15)"
+    ]
+  },
   "accessibility": {
-    "score": "95+",
-    "requirements": [
-      "WCAG 2.2 AA baseline",
-      "keyboard path",
-      "screen reader names",
-      "visible focus",
-      "not color-only",
-      "responsive reflow"
+    "score": 92,
+    "findings": [
+      "Sidebar uses <nav> with aria-label='Main navigation' and skip-to-content link",
+      "MetricCard trend indicators include directional icon AND text alongside color — not color-only",
+      "DataTable provides <caption>, scoped <th> headers, and aria-sort='ascending|descending|none' on sortable columns",
+      "Sort state changes announced via aria-live='polite' region",
+      "NotificationDrawer uses <dialog> element with focus trap, Escape-to-close, and focus-restore-to-trigger",
+      "All interactive elements have visible 3px focus ring with 2px offset",
+      "Touch targets meet 44x44px minimum on all clickable elements",
+      "Chart components include text summaries and data-table alternatives for screen reader users",
+      "Responsive reflow works down to 320px width without horizontal scrolling",
+      "Color contrast: sidebar text (#94A3B8) on #1E293B meets 4.58:1 ratio for AA large text"
+    ],
+    "gaps": [
+      "Loading skeleton animations should respect prefers-reduced-motion",
+      "Live region announcements for bulk actions need debouncing to avoid announcement floods"
     ]
   },
   "architecture": {
     "pattern": "Feature-Sliced Design",
-    "requirements": [
-      "clear domain boundaries",
-      "typed component contracts",
-      "state model",
-      "test seams",
-      "security review when relevant"
+    "domain_boundaries": [
+      "features/dashboard/ — KPI grid, charts, metric cards (read-heavy, no mutations)",
+      "features/filters/ — filter state, saved presets, date-range selection",
+      "features/notifications/ — drawer UI, unread state, optimistic dismissal",
+      "features/exports/ — CSV/PDF generation, download queue",
+      "shared/ui/ — AppShell, Button, Badge, SkeletonLoader, Toast",
+      "shared/api/ — typed API client with request/response contracts"
+    ],
+    "state_management": [
+      "URL search params for current filters (bookmarkable, shareable)",
+      "React Context for notification drawer open/close state",
+      "React Query (TanStack) for server-state caching and refetch",
+      "Optimistic updates for notification dismissal"
+    ],
+    "api_contracts": [
+      "GET /api/metrics?filters={...} → MetricCard[]",
+      "GET /api/accounts?page={n}&sort={col}&order={dir}&filters={...} → PaginatedResponse<Account>",
+      "POST /api/exports → { jobId, estimatedCompletion }",
+      "PATCH /api/notifications/{id}/read → 204 No Content"
     ]
   },
   "design_system": {
-    "maturity": 4,
-    "requirements": [
-      "semantic tokens",
-      "component variants",
-      "state coverage",
-      "documentation",
-      "drift detection"
+    "maturity": 3,
+    "adopted": [
+      "Semantic color tokens used across all components — no raw hex values in feature code",
+      "Typography scale applied consistently; mixed font families for metrics vs prose",
+      "Spacing tokens used for all padding, margin, and gap values",
+      "Component variants documented: Button (primary|secondary|ghost|danger, sm|md|lg)",
+      "Badge variants: neutral|success|warning|danger, with and without dot indicator"
+    ],
+    "gaps": [
+      "No design-token package published to npm — tokens copied manually into theme config",
+      "SkeletonLoader component not yet part of shared design system; duplicated across features",
+      "No automated drift detection between design files and implementation tokens"
     ]
   },
   "ux": {
-    "score": "90+",
-    "requirements": [
-      "clear primary action",
-      "low cognitive load",
-      "error and recovery states",
-      "intent preserved",
-      "journey coverage"
+    "score": 88,
+    "observations": [
+      "Primary action (Export) clearly positioned in filter bar with high-contrast CTA",
+      "KPI grid allows at-a-glance scanning with consistent metric card layout",
+      "Filter state preserved in URL — users can share filtered views via link",
+      "Notification drawer provides per-item dismiss and bulk 'mark all read'",
+      "Error states show inline recovery action (retry button) rather than just error text",
+      "Skeleton loading provides spatial stability — no layout shift on data arrival"
+    ],
+    "concerns": [
+      "No undo for bulk actions (delete, mark-read) — irreversible without confirmation dialog",
+      "Date range picker is custom-built rather than native input[type=date]; keyboard accessibility needs testing",
+      "Export action provides no progress feedback for long-running report generation jobs"
     ]
   },
-  "security": [
-    "least privilege where relevant",
-    "sensitive data handling",
-    "safe API exposure",
-    "auditability for enterprise actions"
-  ],
+  "security": {
+    "findings": [
+      "Role-based UI gating: admin-only export and bulk-delete actions hidden from viewer roles",
+      "Account table redacts PII fields (email, phone) for users with viewer role — shows masked values",
+      "Audit events logged for every export action and bulk operation",
+      "Notification drawer fetches from role-scoped endpoint — users only see their own notifications",
+      "API routes validate authorization on server; client-side hiding is UX convenience only"
+    ]
+  },
   "code_quality": {
     "tests": [
-      "component behavior",
-      "visual regression",
-      "accessibility scan",
-      "critical e2e journey"
+      "MetricCard renders positive/negative/neutral trends correctly with appropriate aria labels",
+      "DataTable sort triggers api call with correct params and announces sort change",
+      "FilterPanel applies filters, preserves state in URL, and clears correctly",
+      "NotificationDrawer traps focus, closes on Escape, and restores focus to trigger",
+      "axe-core accessibility scan passes with zero violations on all routes",
+      "Visual regression test for desktop (1440px) and tablet (1024px) breakpoints"
     ],
     "performance": [
-      "no avoidable layout shift",
-      "bounded rendering",
-      "optimized assets",
-      "responsive interaction latency"
+      "AppShell LCP under 1.8s (sidebar + top bar + first KPI row)",
+      "DataTable renders 500 rows at under 80ms with virtualization",
+      "No Cumulative Layout Shift on data load — skeleton dimensions match final content",
+      "Notification drawer content deferred (lazy-loaded on first open)"
     ],
     "maintainability": [
-      "no visual-only component names",
-      "no raw token drift",
-      "small reviewable modules",
-      "documented tradeoffs"
+      "Components named by function (MetricCard, FilterPanel) not visual style (BlueCard, TopBar)",
+      "Design tokens referenced via CSS custom properties — no raw values in component styles",
+      "Each feature module under 300 lines; shared UI components under 150 lines each",
+      "State machines documented for complex UI (drawer open/close, export flow) in feature README"
     ]
   }
 }

@@ -4,7 +4,7 @@
 Touch targets below platform/WCAG expectations increase motor difficulty and error rates.
 
 ## Detection Pattern
-Look for this in XD artboards, prototypes, component states, screenshots, and generated UI.
+Measure interactive elements on XD artboards designed for mobile viewports: flag any tappable area smaller than 44x44 CSS pixels (WCAG 2.5.5 minimum). Check densely packed controls like inline date pickers, table row actions, map pins, and icon-only toolbars. Verify spacing between adjacent touch targets — elements closer than 8px apart risk mis-taps even if individually large enough.
 
 ## Correction Strategy
 - Preserve the user goal.

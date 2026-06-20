@@ -4,7 +4,7 @@
 Nested modal flows create focus traps, unclear escape behavior, and high cognitive load.
 
 ## Detection Pattern
-Look for this in XD artboards, prototypes, component states, screenshots, and generated UI.
+Trace XD interaction flows where a modal dialog triggers a second overlay on top of it — look for stacked dimmed backgrounds, nested close buttons, or confirmation dialogs that launch from within an already-open modal. Flag any flow where the user must dismiss two or more overlays in reverse order to return to the main screen. Check whether focus management is defined for each nesting level.
 
 ## Correction Strategy
 - Preserve the user goal.

@@ -4,11 +4,7 @@
 
 ## Purpose
 
-This module defines the quality systems that transform DMW Product Engineering OS from a design-to-code assistant into a continuously improving enterprise design intelligence platform.
-
-These systems are mandatory.
-
-If a conflict exists between this document and another module, this document takes precedence.
+This module defines the quality systems that transform DMW Product Engineering OS from a design-to-code assistant into a continuously improving enterprise design intelligence platform. These systems are mandatory. If a conflict exists between this document and another module, this document takes precedence.
 
 ---
 
@@ -16,114 +12,25 @@ If a conflict exists between this document and another module, this document tak
 
 ## Objective
 
-Measure progress.
-
-The operating system must never assume it is improving.
-
-All improvements must be benchmarked.
-
----
+Measure progress. The operating system must never assume it is improving. All improvements must be benchmarked.
 
 ## Benchmark Categories
 
-### Dashboard SaaS
-
-Expected abilities:
-
-* dashboard extraction
-* information hierarchy
-* complex navigation
-* charts
-* tables
-* filtering
-* reporting
-
----
-
-### Ecommerce
-
-Expected abilities:
-
-* catalog design
-* search
-* product detail
-* checkout
-* payment
-* account management
-
----
-
-### Mobile App
-
-Expected abilities:
-
-* onboarding
-* gesture patterns
-* mobile navigation
-* accessibility
-* responsive layouts
-
----
-
-### Enterprise Admin
-
-Expected abilities:
-
-* permissions
-* workflows
-* approvals
-* audit trails
-* configuration systems
-
----
-
-### Fintech
-
-Expected abilities:
-
-* transaction history
-* account management
-* risk communication
-* compliance awareness
-
----
-
-### Healthcare
-
-Expected abilities:
-
-* patient workflows
-* accessibility
-* regulatory awareness
-* critical information hierarchy
-
----
-
-### AI Product
-
-Expected abilities:
-
-* chat interfaces
-* prompt workflows
-* model management
-* confidence communication
-
----
+| Category | Expected Abilities |
+|----------|-------------------|
+| **Dashboard SaaS** | dashboard extraction, information hierarchy, complex navigation, charts, tables, filtering, reporting |
+| **Ecommerce** | catalog design, search, product detail, checkout, payment, account management |
+| **Mobile App** | onboarding, gesture patterns, mobile navigation, accessibility, responsive layouts |
+| **Enterprise Admin** | permissions, workflows, approvals, audit trails, configuration systems |
+| **Fintech** | transaction history, account management, risk communication, compliance awareness |
+| **Healthcare** | patient workflows, accessibility, regulatory awareness, critical information hierarchy |
+| **AI Product** | chat interfaces, prompt workflows, model management, confidence communication |
 
 ## Benchmark Scoring
 
-Every benchmark produces:
+Every benchmark produces scores across these axes (0-100): Design Understanding, UX Quality, Accessibility, Architecture, Maintainability, Performance, Security, Testability.
 
-| Category             | Score |
-| -------------------- | ----- |
-| Design Understanding | 0-100 |
-| UX Quality           | 0-100 |
-| Accessibility        | 0-100 |
-| Architecture         | 0-100 |
-| Maintainability      | 0-100 |
-| Performance          | 0-100 |
-| Security             | 0-100 |
-| Testability          | 0-100 |
+Score history is stored in `results/YYYY-MM-DD/`. Regressions trigger automatic review. Two consecutive regressions in any category block future output until the root cause is identified and corrected.
 
 ---
 
@@ -131,73 +38,23 @@ Every benchmark produces:
 
 ## Objective
 
-Failures are assets.
-
-Every failure becomes future intelligence.
-
----
+Failures are assets. Every failure becomes future intelligence.
 
 ## Failure Record Template
 
-Failure ID
-
-Failure Name
-
-Date
-
-Project
-
-Root Cause
-
-Impact
-
-Detection Signal
-
-Correction Strategy
-
-Prevention Strategy
-
-New Rule Created
-
----
+Every failure is recorded with: Failure ID, Name, Date, Project, Root Cause, Impact, Detection Signal, Correction Strategy, Prevention Strategy, and any New Rule Created.
 
 ## Required Analysis
 
-Every failure must answer:
-
-What happened?
-
-Why happened?
-
-How detected?
-
-How prevented?
-
-Should new rule exist?
-
----
+Every failure must answer: What happened? Why? How was it detected? How can it be prevented? Should a new rule exist?
 
 ## Failure Categories
 
-Design Failure
+Design, Accessibility, Architecture, Performance, Security, Testing, Documentation, Product, User Experience, Component.
 
-Accessibility Failure
+## Rule Creation Triggers
 
-Architecture Failure
-
-Performance Failure
-
-Security Failure
-
-Testing Failure
-
-Documentation Failure
-
-Product Failure
-
-User Experience Failure
-
-Component Failure
+Same failure appears twice → create a prevention rule. Same pattern appears three times → codify into a pattern. Same recommendation appears five times → promote to a default.
 
 ---
 
@@ -205,574 +62,123 @@ Component Failure
 
 ## Principle
 
-The operating system never finishes learning.
+The operating system never finishes learning. Every project improves the operating system.
 
-Every project improves the operating system.
+## Post-Project Review
 
----
+After every project, generate: Lessons Learned, Missing Knowledge, Missing Rules, Missed Opportunities, Unexpected Successes, Discovered Patterns, Architecture Insights, Accessibility Insights, Design Insights.
 
-## Post Project Review
-
-After every project generate:
-
-Lessons Learned
-
-Missing Knowledge
-
-Missing Rules
-
-Missed Opportunities
-
-Unexpected Successes
-
-Discovered Patterns
-
-Architecture Insights
-
-Accessibility Insights
-
-Design Insights
+Store findings in `knowledge/evolution/`. File naming: `YYYY-MM-DD-{topic-slug}.md`.
 
 ---
 
-## Evolution Repository
+# 4. AGENT REVIEW SYSTEM
 
-Store findings in:
+The agent review system is documented in `knowledge/agents/AGENT_ROSTER.md`. Required review lenses:
 
-knowledge/evolution/
-
----
-
-## Rule Creation
-
-New rules may be created when:
-
-same failure appears twice
-
-same pattern appears three times
-
-same recommendation appears five times
+- **XD_DESIGN_CRITIC**: Challenge UX, accessibility, conversion, cognitive load, hierarchy, information scent, error recovery, and enterprise readiness. Must not blindly preserve weak XD decisions.
+- **XD_PRINCIPAL_ENGINEER**: Veto architecture that is not scalable, maintainable, secure, testable, performant, or aligned with repository conventions.
+- **XD_SECURITY_ARCHITECT**: Review authentication, authorization, secrets handling, session management, OWASP risks, and API exposure.
+- **XD_PRODUCT_STRATEGIST**: Challenge feature purpose, metric impact, user effort, simpler alternatives, and product bloat.
+- **XD_COST_ANALYST**: Estimate implementation cost, maintenance cost, technical-debt risk, and operational cost.
+- **XD_ACCESSIBILITY_LEAD**: Verify WCAG compliance, keyboard navigation, screen-reader behavior, color contrast, and focus management.
+- **XD_COUNCIL**: Merge independent verdicts and produce PASS, PASS WITH WARNINGS, REVISE, or REJECT.
+- **XD_FUTURE_PROOFING_AGENT**: Challenge whether the design, architecture, and system will still work in two years.
+- **XD_SIMPLICITY_ADVOCATE**: Challenge complexity and ask whether the same outcome can be achieved more simply.
+- **XD_EXECUTIVE_REVIEWER**: Review from CTO, VP Engineering, Head of Product, and Design Director perspectives.
 
 ---
 
-# 4. XD DESIGN CRITIC AGENT
-
-Agent Name:
-
-XD_DESIGN_CRITIC
-
----
-
-## Mission
-
-Challenge designs.
-
-Do not merely reproduce.
-
----
-
-## Responsibilities
-
-Evaluate:
-
-clarity
-
-usability
-
-discoverability
-
-consistency
-
-cognitive load
-
-visual hierarchy
-
-task completion
-
-conversion potential
-
-user confidence
-
-information architecture
-
----
-
-## Questions
-
-Can users understand this immediately?
-
-Can users complete tasks quickly?
-
-Can users recover from mistakes?
-
-Can users navigate confidently?
-
-Can users trust the interface?
-
-Would expert designers approve this design?
-
----
-
-## Output
-
-Strengths
-
-Weaknesses
-
-Risks
-
-Recommendations
-
-Priority Fixes
-
-Final Score
-
----
-
-# 5. XD PRINCIPAL ENGINEER AGENT
-
-Agent Name:
-
-XD_PRINCIPAL_ENGINEER
-
----
-
-## Mission
-
-Protect long-term maintainability.
-
----
-
-## Responsibilities
-
-Review:
-
-architecture
-
-scalability
-
-testability
-
-performance
-
-security
-
-maintainability
-
-developer experience
-
-technical debt
-
----
-
-## Required Questions
-
-Can this scale?
-
-Can new developers understand it?
-
-Can it be tested?
-
-Can it be secured?
-
-Can it be monitored?
-
-Can it evolve?
-
----
-
-## Authority
-
-May reject implementation.
-
-May require redesign.
-
-May require architecture changes.
-
----
-
-# 6. WORLD CLASS GATE
+# 5. WORLD CLASS GATE
 
 ## Principle
 
 No output is final until approved.
 
----
-
 ## Required Minimum Scores
 
-Accessibility >= 95
-
-Maintainability >= 90
-
-Architecture >= 90
-
-Security >= 90
-
-Design Quality >= 90
-
-Testability >= 90
-
-Documentation >= 90
-
-Performance >= 85
-
----
+| Category | Threshold |
+|----------|----------|
+| Accessibility | ≥ 95 |
+| Maintainability | ≥ 90 |
+| Architecture | ≥ 90 |
+| Security | ≥ 90 |
+| Design Quality | ≥ 90 |
+| Testability | ≥ 90 |
+| Documentation | ≥ 90 |
+| Performance | ≥ 85 |
 
 ## Gate Outcomes
 
-PASS
-
-PASS WITH WARNINGS
-
-REVISE
-
-REJECT
+- **PASS**: All scores at or above threshold. Output is approved.
+- **PASS WITH WARNINGS**: One or two non-critical scores 1-4 points below threshold with documented justification and remediation plan.
+- **REVISE**: Any core score below threshold or three or more scores below threshold. Fix the issues and re-submit.
+- **REJECT**: Accessibility, Security, or Architecture below threshold; critical UX issues; critical compliance issues. Do not proceed.
 
 ---
 
-## Rejection Conditions
-
-Accessibility below threshold
-
-Security below threshold
-
-Architecture below threshold
-
-Critical UX issues
-
-Critical compliance issues
-
----
-
-# 7. PATTERN DATABASE
+# 6. PATTERN DATABASE
 
 ## Objective
 
-Recognize common product structures.
+Recognize common product structures. Provide reference implementations and anti-pattern warnings for each.
+
+## Pattern Categories
+
+**Authentication**: Sign In, Sign Up, Forgot Password, Reset Password, MFA, SSO, Account Recovery.
+**Commerce**: Catalog, Cart, Checkout, Order History, Subscriptions, Returns, Payments.
+**SaaS**: Dashboard, Workspace, Billing, Team Management, Notifications, Reporting, Analytics, Administration.
+**Mobile**: Bottom Navigation, Tabs, Drawers, Gestures, Onboarding, Settings.
+**AI Product**: Chat, Prompt Library, Knowledge Base, Agent Management, Conversation History, Model Selection, Tool Execution, Feedback Collection.
+
+Each pattern entry should include: component structure, state management approach, accessibility requirements, common mistakes, and testing strategy. See `knowledge/patterns/` for detailed pattern references.
 
 ---
 
-## Authentication Patterns
-
-Sign In
-
-Sign Up
-
-Forgot Password
-
-Reset Password
-
-MFA
-
-SSO
-
-Account Recovery
-
----
-
-## Commerce Patterns
-
-Catalog
-
-Cart
-
-Checkout
-
-Order History
-
-Subscriptions
-
-Returns
-
-Payments
-
----
-
-## SaaS Patterns
-
-Dashboard
-
-Workspace
-
-Billing
-
-Team Management
-
-Notifications
-
-Reporting
-
-Analytics
-
-Administration
-
----
-
-## Mobile Patterns
-
-Bottom Navigation
-
-Tabs
-
-Drawers
-
-Gestures
-
-Onboarding
-
-Settings
-
----
-
-## AI Product Patterns
-
-Chat
-
-Prompt Library
-
-Knowledge Base
-
-Agent Management
-
-Conversation History
-
-Model Selection
-
-Tool Execution
-
-Feedback Collection
-
----
-
-# 8. COMPLIANCE PACKS
+# 7. COMPLIANCE PACKS
 
 ## Objective
 
-Compliance must be reviewed automatically.
+Compliance must be reviewable automatically.
+
+| Standard | Key Requirements |
+|----------|-----------------|
+| **WCAG** | Color contrast (AA minimum), keyboard support, screen reader compatibility, focus management, semantic structure |
+| **GDPR** | Consent mechanism, data collection transparency, data deletion capability, data export, purpose limitation |
+| **PDPA** | Consent tracking, data retention limits, user notification, purpose limitation |
+| **HIPAA** | Protected data identification, access control, audit trails, encryption at rest and in transit, session handling |
+| **PCI-DSS** | Payment data security, sensitive data handling, authentication, logging, monitoring |
+| **SOC2** | Availability, security, integrity, confidentiality, privacy controls |
+| **ISO27001** | Risk management, asset management, access control, operations security, supplier management |
+
+Each compliance pack should be reviewed before output that handles the regulated data type. Packs do not replace legal review — they flag likely violations before they reach production.
 
 ---
 
-## WCAG
-
-Color contrast
-
-Keyboard support
-
-Screen readers
-
-Focus management
-
-Semantic structure
-
----
-
-## GDPR
-
-Consent
-
-Data collection
-
-Data deletion
-
-Data export
-
-Transparency
-
----
-
-## PDPA
-
-Consent tracking
-
-Data retention
-
-User notification
-
-Purpose limitation
-
----
-
-## HIPAA
-
-Protected data
-
-Access control
-
-Audit trails
-
-Encryption
-
-Session handling
-
----
-
-## PCI-DSS
-
-Payment security
-
-Sensitive data handling
-
-Authentication
-
-Logging
-
-Monitoring
-
----
-
-## SOC2
-
-Availability
-
-Security
-
-Integrity
-
-Confidentiality
-
-Privacy
-
----
-
-## ISO27001
-
-Risk management
-
-Asset management
-
-Access control
-
-Operations security
-
-Supplier management
-
----
-
-# 9. COMPONENT INTELLIGENCE DATABASE
+# 8. COMPONENT INTELLIGENCE DATABASE
 
 ## Objective
 
-Components contain behavior.
+Components contain behavior, not merely visuals. The database captures what a component does, when to use it, and what can go wrong.
 
-Not merely visuals.
+## Component Record Fields
 
----
+Every component must document: Name, Purpose, Industry Usage, Accessibility Requirements, Performance Requirements, Testing Requirements, States (default, hover, active, focus, disabled, loading, empty, error), Interactions, Dependencies, Risk Level.
 
-## Component Record
+## Example: Data Table
 
-Name
-
-Purpose
-
-Industry Usage
-
-Accessibility Requirements
-
-Performance Requirements
-
-Testing Requirements
-
-States
-
-Interactions
-
-Dependencies
-
-Risk Level
-
----
-
-## Example
-
-Component:
-
-Data Table
-
-Purpose:
-
-Display large structured datasets.
-
-Accessibility:
-
-Keyboard navigation
-
-Screen reader support
-
-Column descriptions
-
-Sorting announcements
-
----
-
-Performance:
-
-Virtualization
-
-Lazy loading
-
-Efficient rendering
-
----
-
-Testing:
-
-Sorting
-
-Filtering
-
-Pagination
-
-Selection
-
-Export
-
-Accessibility
-
----
+- **Purpose**: Display large structured datasets with sorting, filtering, pagination, and selection.
+- **Accessibility**: Keyboard navigation (arrow keys, Tab), screen reader column announcements, sort direction ARIA labels, row selection announcements.
+- **Performance**: Virtualization for 100+ rows, lazy loading for paginated data, memoized row rendering.
+- **Testing**: Verify sorting, filtering, pagination, selection (single and multi), export, keyboard navigation, screen reader output, empty state, error state, loading skeleton.
+- **Risk Level**: HIGH (core navigation surface for admin users; failure blocks all data access).
 
 ## Intelligence Rules
 
-Every component must include:
-
-why it exists
-
-when to use
-
-when not to use
-
-accessibility requirements
-
-performance requirements
-
-testing requirements
-
-security considerations
+Every component must include: why it exists, when to use it, when NOT to use it, accessibility requirements, performance requirements, testing requirements, and security considerations. Components without this metadata are visual artifacts — not production components.
 
 ---
 
 # FINAL DIRECTIVE
 
-DMW Product Engineering OS must:
-
-learn
-
-benchmark
-
-criticize
-
-review
-
-improve
-
-validate
-
-score
-
-evolve
-
-continuously.
-
-The objective is not code generation.
-
-The objective is world-class product generation.
+DMW Product Engineering OS must learn, benchmark, criticize, review, improve, validate, score, and evolve — continuously. The objective is not code generation. The objective is world-class product generation.

@@ -7,10 +7,10 @@ Use for enterprise systems needing strong module boundaries without distributed-
 Avoid when independent deployability is already required and operational maturity exists.
 
 ## XD-to-Code Application
-- Map XD screens to product domains before creating folders.
-- Keep generic UI primitives separate from domain components.
-- Preserve design intent and data ownership boundaries.
-- Define testing seams at module, use-case, or adapter boundaries.
+- Group XD screens by functional cohesion into modules; screens that change together for the same business reason stay together.
+- Define module boundaries from XD screen groupings: a module owns its screens, data, and domain logic, exposing only a public API.
+- Use XD navigation patterns to validate module coupling: if navigating from Screen A to Screen B requires tight coupling, they may belong in the same module.
+- Enforce compile-time module isolation: no module imports another module's internal XD-derived components directly.
 
 ## Review Questions
 - Does this pattern reduce complexity for this project?
