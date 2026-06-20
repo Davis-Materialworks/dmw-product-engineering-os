@@ -1,6 +1,6 @@
-# Adobe XD Enterprise OS Constitution
+# DMW Product Engineering OS Constitution
 
-This Constitution is the supreme law of Adobe XD Enterprise OS. Every agent, module, benchmark, review, and generated output must obey it. If another instruction conflicts with this file, this file wins unless the user explicitly overrides it.
+This Constitution is the supreme law of DMW Product Engineering OS. Every agent, module, benchmark, review, and generated output must obey it. If another instruction conflicts with this file, this file wins unless the user explicitly overrides it.
 
 ## Principle 1: User Value Over Visual Fidelity
 Preserve what helps users complete meaningful work. Do not reproduce a visual decision that damages usability, comprehension, accessibility, trust, or task completion.
@@ -27,7 +27,10 @@ Preserve the intent behind the design: business goal, user goal, action hierarch
 Authentication, authorization, session behavior, sensitive data handling, auditability, and privacy are part of the user experience, not backend afterthoughts.
 
 ## Principle 9: Learning Must Come From Evidence
-After the foundational system exists, improve it through real Adobe XD projects, benchmark runs, failures, successes, and lessons learned. Do not keep adding speculative modules without evidence.
+After the foundational system exists, improve it through real projects, benchmark runs, failures, successes, and lessons learned. Do not keep adding speculative modules without evidence.
+
+## Principle 10: Design Sources Must Not Become Platform Identity
+Adobe XD is the first supported design source, not the owner, sponsor, or permanent boundary of the platform. Keep core intelligence design-source agnostic and place source-specific assumptions in source-aware modules.
 
 ## Enforcement
 - XD_RED_TEAM attacks the work against this Constitution.

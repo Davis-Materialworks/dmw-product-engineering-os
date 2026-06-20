@@ -1,6 +1,6 @@
 # Evolution Knowledge
 
-Store post-project learning here after every substantial Adobe XD Enterprise OS run.
+Store post-project learning here after every substantial DMW Product Engineering OS run.
 
 Each evolution note must include:
 

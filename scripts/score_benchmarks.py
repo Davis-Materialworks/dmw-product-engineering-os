@@ -80,7 +80,7 @@ def load_json(path: Path) -> dict[str, Any]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Score Adobe XD Enterprise OS benchmark outputs.")
+    parser = argparse.ArgumentParser(description="Score DMW Product Engineering OS benchmark outputs.")
     parser.add_argument("--benchmarks-dir", default="benchmarks", help="Directory containing */benchmark.json files.")
     parser.add_argument("--candidate-dir", help="Optional directory containing <benchmark-id>.json generated outputs to score.")
     parser.add_argument("--json", action="store_true", help="Emit machine-readable JSON.")

@@ -6,6 +6,14 @@ required_files = [
     root / 'SKILL.md',
     root / 'README.md',
     root / 'AGENTS.md',
+    root / 'DISCLAIMER.md',
+    root / 'TRADEMARK.md',
+    root / 'CONTRIBUTING.md',
+    root / 'CODE_OF_CONDUCT.md',
+    root / 'SECURITY.md',
+    root / 'ROADMAP.md',
+    root / 'ARCHITECTURE.md',
+    root / 'GOVERNANCE.md',
     root / 'scripts' / 'score_benchmarks.py',
     root / 'scripts' / 'benchmark_intelligence.py',
     root / 'governance' / 'CONSTITUTION.md',
@@ -72,6 +80,10 @@ required_dirs = [
     root / 'core',
     root / 'adapters',
     root / 'compatibility',
+    root / 'memory',
+    root / 'patterns',
+    root / 'reviews',
+    root / 'workflows',
     root / 'knowledge' / 'adrs',
     root / 'knowledge' / 'success-patterns',
 ]
@@ -84,7 +96,10 @@ if missing:
 skill_text = (root / 'SKILL.md').read_text(encoding='utf-8')
 for phrase in [
     'description: Use when',
-    'Do not ask the user to migrate to Figma',
+    'DMW Product Engineering OS',
+    'not affiliated with, endorsed by, sponsored by, authorized by, or associated with Adobe Inc.',
+    'design-source agnostic',
+    'Do not ask the user to migrate away from their source of truth',
     'OpenAI Codex',
     'Progressive disclosure map',
     'CONFIRMED',
@@ -113,6 +128,26 @@ for phrase in [
 ]:
     if phrase not in skill_text:
         raise SystemExit(f'SKILL.md missing phrase: {phrase}')
+
+readme_text = (root / 'README.md').read_text(encoding='utf-8')
+for phrase in [
+    'DMW Product Engineering OS',
+    'not affiliated with, endorsed by, sponsored by, authorized by, or associated with Adobe Inc.',
+    'DISCLAIMER.md',
+    'TRADEMARK.md',
+    'design-source-agnostic product engineering intelligence platform',
+]:
+    if phrase not in readme_text:
+        raise SystemExit(f'README.md missing phrase: {phrase}')
+
+disclaimer_text = (root / 'DISCLAIMER.md').read_text(encoding='utf-8')
+for phrase in [
+    'independent project created and maintained by Davis Materialworks',
+    'The inclusion of Adobe XD support should not be interpreted as a partnership',
+    'Future Design Sources',
+]:
+    if phrase not in disclaimer_text:
+        raise SystemExit(f'DISCLAIMER.md missing phrase: {phrase}')
 
 modules = list((root / 'references').rglob('*.md'))
 if len(modules) < 15:

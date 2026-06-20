@@ -1,6 +1,6 @@
 # FINAL DIRECTIVE
 
-Adobe XD Enterprise OS must:
+DMW Product Engineering OS must:
 
 learn
 

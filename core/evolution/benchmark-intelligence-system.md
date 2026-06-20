@@ -1,7 +1,7 @@
 # Benchmark Intelligence System
 
 ## Lessons Learned
-The Adobe XD Enterprise OS needs benchmark projects, expected outputs, actual outputs, score history, regression detection, and reporting to measure improvement objectively.
+The DMW Product Engineering OS needs benchmark projects, expected outputs, actual outputs, score history, regression detection, and reporting to measure improvement objectively.
 
 ## Missing Rules Added
 - Store expected outputs before scoring actual outputs.

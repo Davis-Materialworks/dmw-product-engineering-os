@@ -107,7 +107,7 @@ def write_report(results_dir: Path, report_dir: Path, results: list[dict[str, An
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Run Adobe XD Enterprise OS benchmark intelligence scoring.")
+    parser = argparse.ArgumentParser(description="Run DMW Product Engineering OS benchmark intelligence scoring.")
     parser.add_argument("--benchmarks-dir", default="benchmarks")
     parser.add_argument("--actual-dir", help="Directory containing actual output JSON files named <project>.json")
     parser.add_argument("--results-dir", default=None, help="Results directory. Defaults to results/<today>.")
