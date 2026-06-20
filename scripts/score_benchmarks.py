@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -46,8 +47,11 @@ def field_completeness(benchmark: dict[str, Any], field: str) -> float:
         if len(components) < 3:
             return 0.65
         required = {"component", "industry", "accessibility", "performance", "testing"}
-        complete = sum(1 for component in components if required.issubset(component.keys()))
-        return complete / len(components)
+        per_key_scores = []
+        for component in components:
+            matched_keys = sum(1 for key in required if key in component)
+            per_key_scores.append(matched_keys / len(required))
+        return sum(per_key_scores) / len(per_key_scores) if per_key_scores else 0.0
     return 1.0
 
 
@@ -61,9 +65,9 @@ def score_reference_benchmark(benchmark: dict[str, Any]) -> int:
 def keyword_score(expected: Any, candidate: Any) -> float:
     expected_text = flatten(expected).lower()
     candidate_text = flatten(candidate).lower()
-    terms = sorted({term.strip(".,:;()[]{}") for term in expected_text.split() if len(term.strip(".,:;()[]{}")) >= 5})
+    terms = sorted({term.strip(".,:;()[]{}") for term in expected_text.split() if len(term.strip(".,:;()[]{}")) >= 4})
     if not terms:
-        return 1.0
+        return 0.0  # empty terms: no keywords to match — return 0, not 1.0, to avoid conflating empty with perfect
     matched = sum(1 for term in terms if term in candidate_text)
     return matched / len(terms)
 
@@ -71,7 +75,7 @@ def keyword_score(expected: Any, candidate: Any) -> float:
 def score_candidate(benchmark: dict[str, Any], candidate: dict[str, Any]) -> int:
     score = 0.0
     for field, weight in CATEGORY_WEIGHTS.items():
-        score += weight * keyword_score(benchmark.get(field), candidate.get(field, candidate))
+        score += weight * keyword_score(benchmark.get(field), candidate.get(field, {}))
     return round(score)
 
 
@@ -95,6 +99,7 @@ def main() -> int:
         benchmark_id = benchmark.get("id", benchmark_file.parent.name)
         missing = [field for field in REQUIRED_TOP_LEVEL if field not in benchmark]
         if missing:
+            print(f"WARNING: {benchmark_id} is missing required fields: {', '.join(missing)}", file=sys.stderr)
             score = 0
             mode = "invalid"
         elif candidate_root:

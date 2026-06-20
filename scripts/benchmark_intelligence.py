@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from datetime import date
 from pathlib import Path
 from typing import Any
@@ -38,27 +39,70 @@ def keyword_match_score(expected: Any, actual: Any) -> int:
     actual_text = flatten(actual).lower()
     tokens = sorted({t.strip(".,:;()[]{}") for t in expected_text.split() if len(t.strip(".,:;()[]{}")) >= 4})
     if not tokens:
-        return 100
+        return 0  # empty tokens: no keywords to match — return 0, not 100, to avoid conflating empty with perfect
     matched = sum(1 for token in tokens if token in actual_text)
     return round((matched / len(tokens)) * 100)
 
 
 def score_project(project_dir: Path, actual_dir: Path | None = None) -> dict[str, Any]:
     benchmark = load_json(project_dir / "benchmark.json")
-    expected = benchmark["expected"]
+
+    # Schema B detection — this script only handles Schema A
+    if "adobe_xd_design_description" in benchmark or "expected_design_system" in benchmark:
+        print(f"WARNING: {project_dir.name} appears to be Schema B — skipping", file=sys.stderr)
+        return {
+            "project": project_dir.name,
+            "title": benchmark.get("title", ""),
+            "overall": 0,
+            "scores": {},
+            "status": "unscored-schema-b",
+        }
+
     actual_path = actual_dir / f"{project_dir.name}.json" if actual_dir else None
-    actual = load_json(actual_path) if actual_path and actual_path.exists() else expected
+    if not actual_path or not actual_path.exists():
+        return {
+            "project": project_dir.name,
+            "title": benchmark.get("title", ""),
+            "overall": 0,
+            "scores": {},
+            "status": "needs-actual-output",
+            "previous_score": None,
+            "delta": None,
+            "trend": "new",
+        }
+
+    actual = load_json(actual_path)
+    expected = benchmark.get("expected", {})
 
     category_scores = {}
-    category_scores["design_understanding"] = keyword_match_score(benchmark["design_description"], actual)
-    category_scores["ux_quality"] = keyword_match_score(expected["ux"], actual.get("ux", actual))
-    category_scores["accessibility"] = keyword_match_score(expected["accessibility"], actual.get("accessibility", actual))
-    category_scores["architecture"] = keyword_match_score(expected["architecture"], actual.get("architecture", actual))
-    category_scores["design_system"] = keyword_match_score(expected["design_system"], actual.get("design_system", actual))
-    category_scores["maintainability"] = keyword_match_score(expected["code_quality"], actual.get("code_quality", actual))
-    category_scores["performance"] = keyword_match_score(expected["code_quality"].get("performance", []), actual.get("code_quality", actual))
-    category_scores["security"] = keyword_match_score(expected["security"], actual.get("security", actual))
-    category_scores["testability"] = keyword_match_score(expected["code_quality"].get("tests", []), actual.get("code_quality", actual))
+    category_scores["design_understanding"] = keyword_match_score(
+        benchmark.get("design_description", ""), actual
+    )
+    category_scores["ux_quality"] = keyword_match_score(
+        expected.get("ux", {}), actual.get("ux", {})
+    )
+    category_scores["accessibility"] = keyword_match_score(
+        expected.get("accessibility", {}), actual.get("accessibility", {})
+    )
+    category_scores["architecture"] = keyword_match_score(
+        expected.get("architecture", {}), actual.get("architecture", {})
+    )
+    category_scores["design_system"] = keyword_match_score(
+        expected.get("design_system", {}), actual.get("design_system", {})
+    )
+    code_quality = expected.get("code_quality", {})
+    category_scores["maintainability"] = keyword_match_score(
+        code_quality, actual.get("code_quality", {})
+    )
+    category_scores["performance"] = keyword_match_score(
+        code_quality.get("performance", []), actual.get("code_quality", {})
+    )
+    category_scores["security"] = keyword_match_score(
+        expected.get("security", {}), actual.get("security", {})
+    )
+    category_scores["testability"] = keyword_match_score(
+        code_quality.get("tests", []), actual.get("code_quality", {})
+    )
     overall = round(sum(category_scores.values()) / len(category_scores))
 
     return {

@@ -81,6 +81,60 @@ Everything durable belongs in the core. Adapters translate the same core intelli
 
 See [ARCHITECTURE.md](ARCHITECTURE.md) for the full architecture overview.
 
+## What Output Looks Like
+
+Given an XD dashboard artboard, DMW Product Engineering OS produces:
+
+### 1. Design Critique
+```
+XD_DESIGN_CRITIC: FAIL — Contrast deficit in FilterPanel.muted-label (#94a3b8 on #f1f5f9)
+  INFERRED: Muted labels used in 4/6 panels. Ratio 2.7:1 (WCAG AA requires 4.5:1).
+  Recommendation: Bump to #64748b for 4.5:1. No layout impact.
+XD_ACCESSIBILITY_LEAD: FAIL — DataTable missing caption element and scoped headers
+  CONFIRMED: 6-column table with sort controls, no <caption>, no scope attributes.
+XD_PRODUCT_STRATEGIST: PASS WITH WARNINGS — Delete action lacks confirmation step
+  INFERRED: Bulk delete appears in 2 contexts; single-click with no undo.
+
+XD_COUNCIL verdict: REVISE (Accessibility < 95, Design Quality block)
+```
+
+### 2. Component Metadata
+```json
+{
+  "component": "PaymentSplitCard",
+  "industry": "Fintech",
+  "evidence": "CONFIRMED from XD artboard 'Split Payment - Desktop'",
+  "accessibility": ["labeled inputs", "error announcements", "live region for summary"],
+  "performance": ["debounced recalculation", "memoized split values"],
+  "states": ["default", "partial-fill", "error", "loading", "read-only"]
+}
+```
+
+### 3. Architecture Recommendation
+```
+Pattern selected: Feature-Sliced Design
+  Fit: 6 XD artboard families map to features (dashboard, payments, users,
+       compliance, analytics, settings). Shared primitives from design tokens
+       belong in shared/ui.
+  Rejected: Monolith (too coupled for 5+ independent product domains),
+            Micro-frontends (premature for team size and deploy complexity).
+
+Output stack: Next.js App Router, React Server Components, TypeScript strict,
+              Tailwind CSS with semantic tokens, shadcn/ui foundation.
+```
+
+## Installation
+
+```bash
+# Preferred — through the agent skills ecosystem:
+skills add Davis-Materialworks/dmw-product-engineering-os
+
+# Or clone manually:
+git clone https://github.com/Davis-Materialworks/dmw-product-engineering-os.git ~/.skills/dmw-product-engineering-os
+```
+
+See [INSTALL.md](INSTALL.md) for detailed per-agent setup instructions.
+
 ## Repository Structure
 
 ```text

@@ -1,0 +1,14 @@
+{
+  "id": "healthcare",
+  "title": "Healthcare Patient Overview",
+  "industry": "Healthcare",
+  "design_system": {
+    "tokens": ["clinical.alert", "clinical.warning", "clinical.normal", "surface.patient-banner", "text.protected", "focus.ring"],
+    "typography": ["clinical.heading", "clinical.body", "clinical.meta", "clinical.alert-label"],
+    "modes": ["light", "high-contrast", "print"]
+  },
+  "components": ["PatientHeader", "ClinicalAlert", "MedicationList"],
+  "accessibility": ["Clinical risk not color-only", "Dense tables with headers and labels", "PHI masked or gated", "Print/share confirmation and audit", "High-contrast for clinical safety"],
+  "architecture": { "frontend": ["role-aware clinical modules", "print stylesheet", "audit-aware actions"], "backend": ["patient summary API", "role permissions", "clinical alert API", "audit log"], "security": ["PHI minimization", "access auditing", "timeout handling", "redaction"] },
+  "code_quality": { "typescript": "typed clinical domain models", "tests": ["role-based rendering", "alert priority", "print layout", "axe scan"] }
+}

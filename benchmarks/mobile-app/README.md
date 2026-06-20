@@ -1,0 +1,1 @@
+Legacy Schema B benchmark. The canonical numbered version is at `benchmarks/05-mobile-app/`. This directory is preserved for backward compatibility with `score_benchmarks.py`.

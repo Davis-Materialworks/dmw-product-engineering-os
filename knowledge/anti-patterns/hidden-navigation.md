@@ -4,7 +4,7 @@
 Navigation hidden behind unclear icons or gestures reduces discoverability and confidence.
 
 ## Detection Pattern
-Look for this in XD artboards, prototypes, component states, screenshots, and generated UI.
+Examine XD artboards for navigation triggered only by hamburger menus on desktop, unlabeled icon-only toolbars, swipe gestures without affordance indicators, or hover-revealed menus invisible to keyboard and touch users. Flag any primary navigation item that requires discovery — if the user can't see where to go within 3 seconds of landing, the navigation is hidden.
 
 ## Correction Strategy
 - Preserve the user goal.

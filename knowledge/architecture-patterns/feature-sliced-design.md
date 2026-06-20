@@ -7,10 +7,10 @@ Use when frontend work spans multiple product domains and needs predictable boun
 Avoid when the app is tiny or the team lacks conventions to enforce layer boundaries.
 
 ## XD-to-Code Application
-- Map XD screens to product domains before creating folders.
-- Keep generic UI primitives separate from domain components.
-- Preserve design intent and data ownership boundaries.
-- Define testing seams at module, use-case, or adapter boundaries.
+- Map each XD artboard or screen variant to a feature folder under `features/`, with shared primitives in `shared/`.
+- Identify entities from XD data models that span multiple screens and place them in `entities/` layer.
+- Detect widget candidates from XD component instances reused across artboards; place them in `widgets/`.
+- Pages layer maps to top-level XD flows; each page orchestrates features and widgets without owning business logic.
 
 ## Review Questions
 - Does this pattern reduce complexity for this project?

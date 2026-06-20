@@ -1,0 +1,14 @@
+{
+  "id": "ecommerce",
+  "title": "E-commerce Product Discovery and Checkout",
+  "industry": "E-commerce",
+  "design_system": {
+    "tokens": ["price.sale", "price.regular", "inventory.warning", "surface.product-card", "action.checkout.background", "focus.ring"],
+    "typography": ["heading.product", "body.description", "label.price", "caption.promo"],
+    "modes": ["light", "high-contrast"]
+  },
+  "components": ["ProductCard", "FilterPanel", "CheckoutStep"],
+  "accessibility": ["Checkout errors associated with fields", "Cart drawer keyboard/screen-reader operable", "Sale status not color-only", "Mobile filters focus management", "Product images alt text"],
+  "architecture": { "frontend": ["route segments", "server-rendered product data"], "backend": ["cart API", "inventory check", "coupon validation", "payment boundary"], "security": ["server-side price", "PCI boundary", "payment error redaction"] },
+  "code_quality": { "typescript": "schema-validated checkout forms", "tests": ["checkout e2e", "axe scan", "visual diff", "payment failure path"] }
+}

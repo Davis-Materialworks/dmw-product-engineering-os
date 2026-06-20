@@ -1,0 +1,14 @@
+{
+  "id": "dashboard-saas",
+  "title": "SaaS Operations Dashboard",
+  "industry": "B2B SaaS",
+  "design_system": {
+    "tokens": ["surface.canvas", "surface.sidebar", "surface.card", "text.primary", "text.secondary", "action.primary.background", "feedback.success", "feedback.warning", "feedback.danger", "focus.ring"],
+    "typography": ["display.metric", "heading.section", "body.default", "label.table", "caption.meta"],
+    "modes": ["light", "dark-sidebar", "high-contrast"]
+  },
+  "components": ["AppShell", "MetricCard", "DataTable", "NotificationDrawer"],
+  "accessibility": ["Dark sidebar contrast WCAG 2.2 AA", "Table sorting aria-sort announcements", "Trend indicators not color-only", "Drawer focus trap and Escape", "Charts need summaries"],
+  "architecture": { "frontend": ["feature-oriented dashboard module", "server data boundary"], "backend": ["usage metrics", "account health", "notification endpoint"], "security": ["role-based UI gating", "audit events", "field redaction"] },
+  "code_quality": { "typescript": "strict props for table rows and metric values", "tests": ["component state", "axe scan", "keyboard navigation", "visual regression"] }
+}

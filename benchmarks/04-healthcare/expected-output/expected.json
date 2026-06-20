@@ -2,75 +2,174 @@
   "components": [
     "PatientHeader",
     "ClinicalAlert",
+    "AppointmentCard",
     "MedicationList",
     "LabResultsTable",
-    "CareTeamNotes"
+    "LabResultDetail",
+    "MessageThread",
+    "VisitSummaryCard",
+    "AlertBanner",
+    "MedicationInteractionWarning",
+    "SessionTimeoutModal",
+    "NavigationSidebar",
+    "BottomTabNav",
+    "SecureMessageComposer",
+    "LabTrendChart"
   ],
+  "design_tokens": {
+    "colors": [
+      "surface.page: #F1F5F9",
+      "surface.card: #FFFFFF",
+      "text.primary: #0F172A",
+      "text.secondary: #475569",
+      "action.primary.bg: #0284C7",
+      "action.primary.hover: #0369A1",
+      "feedback.critical: #DC2626",
+      "feedback.warning: #D97706",
+      "feedback.normal: #16A34A",
+      "feedback.info: #2563EB",
+      "focus.ring: #0284C7"
+    ],
+    "typography": [
+      "heading.page: 26px/1.2, 700, system-ui",
+      "heading.section: 18px/1.3, 600, system-ui",
+      "body.default: 16px/1.6, 400, system-ui",
+      "label.field: 13px/1.4, 600, system-ui",
+      "display.lab-value: 20px/1.2, 600, system-ui",
+      "caption.clinical: 12px/1.4, 400, system-ui"
+    ],
+    "spacing": [
+      "space.xs: 4px",
+      "space.sm: 8px",
+      "space.md: 16px",
+      "space.lg: 24px",
+      "space.xl: 32px",
+      "space.2xl: 48px"
+    ],
+    "radius": [
+      "radius.card: 12px",
+      "radius.button: 8px",
+      "radius.badge: 9999px"
+    ]
+  },
   "accessibility": {
-    "score": "95+",
-    "requirements": [
-      "WCAG 2.2 AA baseline",
-      "keyboard path",
-      "screen reader names",
-      "visible focus",
-      "not color-only",
-      "responsive reflow"
+    "score": 94,
+    "findings": [
+      "Navigation sidebar uses <nav> with aria-label='Patient portal navigation'",
+      "Skip-to-content link is the first focusable element on every page",
+      "Lab results: abnormal values flagged with BOTH red color AND text label 'Abnormal — above reference range' — never color alone",
+      "All data tables provide <caption>, <th scope='row|col'>, and aria-sort attributes",
+      "Medication interaction warnings include visible icon with tooltip AND text explanation",
+      "Critical alerts use role='alert' for immediate screen reader announcement",
+      "Non-critical updates (message arrival, appointment confirmation) use aria-live='polite'",
+      "Session timeout modal traps focus and announces remaining time via aria-live region",
+      "All form fields have visible <label> elements with error messages linked via aria-describedby",
+      "Touch targets at minimum 44x44px; medication list rows at 48px height for comfortable tapping",
+      "Focus ring visible (3px, #0284C7) on all interactive elements"
+    ],
+    "gaps": [
+      "Lab trend chart (sparkline) lacks accessible alternative — should include data table summary",
+      "MessageThread attachment previews need descriptive alt text generation"
     ]
   },
   "architecture": {
     "pattern": "Domain-Driven Design",
-    "requirements": [
-      "clear domain boundaries",
-      "typed component contracts",
-      "state model",
-      "test seams",
-      "security review when relevant"
+    "domain_boundaries": [
+      "domains/patients/ — patient demographics, header, allergies (core identity aggregate)",
+      "domains/appointments/ — appointment scheduling, reminders, calendar integration",
+      "domains/medications/ — active medications, dosage schedule, refill status, interaction checks",
+      "domains/labs/ — lab results, reference ranges, trend analysis, clinical flags",
+      "domains/messaging/ — secure patient-provider messaging, attachments, read receipts",
+      "domains/visits/ — visit summaries, diagnoses, procedures, follow-up instructions",
+      "shared/ui/ — clinical UI primitives (ClinicalFlag, ReferenceRange, MedicationRow)",
+      "shared/infra/ — FHIR API client, audit logger, session manager, encryption service"
+    ],
+    "state_management": [
+      "React Query for server-state: appointments list, lab results, medication list",
+      "React Context for patient identity (loaded once on auth, available across routes)",
+      "URL routing for section selection (/portal/appointments, /portal/labs, etc.)",
+      "Local state for message composition (preserved on navigation via sessionStorage)",
+      "Zustand store for unread message count (cross-route badge persistence)"
+    ],
+    "api_contracts": [
+      "GET /fhir/Patient/{id} → FHIR Patient resource",
+      "GET /fhir/Appointment?patient={id}&date=ge{today} → FHIR Bundle<Appointment>",
+      "GET /fhir/MedicationRequest?patient={id}&status=active → FHIR Bundle<MedicationRequest>",
+      "GET /fhir/Observation?patient={id}&category=laboratory&_sort=-date → FHIR Bundle<Observation>",
+      "POST /fhir/Communication → FHIR Communication (secure message)"
     ]
   },
   "design_system": {
-    "maturity": 4,
-    "requirements": [
-      "semantic tokens",
-      "component variants",
-      "state coverage",
-      "documentation",
-      "drift detection"
+    "maturity": 3,
+    "adopted": [
+      "Semantic color tokens with clinical context (feedback.critical, feedback.warning, feedback.normal)",
+      "Typography scale designed for readability at 16px body minimum (clinical data legibility)",
+      "Consistent spacing tokens used across appointment cards, medication rows, and lab result panels",
+      "ClinicalFlag component with variants: normal|borderline|abnormal|critical",
+      "AlertBanner variants: critical (non-dismissible, red), warning (dismissible, amber), info (dismissible, blue)",
+      "PatientHeader standardizes display of name, MRN, DOB, provider, and allergy warnings across all sections"
+    ],
+    "gaps": [
+      "LabResultsTable and MedicationList have duplicated sort/filter logic — should extract shared DataTable primitive",
+      "No automated token sync between design files and clinical component library",
+      "VisitSummaryCard uses custom accordion instead of shared disclosure pattern"
     ]
   },
   "ux": {
-    "score": "90+",
-    "requirements": [
-      "clear primary action",
-      "low cognitive load",
-      "error and recovery states",
-      "intent preserved",
-      "journey coverage"
+    "score": 89,
+    "observations": [
+      "Patient identity (name, MRN, allergies) persistent across all portal sections — no repeated lookups",
+      "Critical lab results shown via prominent AlertBanner at page top with direct link to affected result",
+      "Appointment cards show prep instructions prominently (fasting, medication adjustments)",
+      "Medication list grouped by active/discontinued with clear visual separation",
+      "MessageThread uses familiar email-like two-panel layout — low learning curve for patients",
+      "Session timeout modal provides countdown with 'Extend session' action rather than surprise logout",
+      "Visit summaries collapsible by section (diagnoses, procedures, medications) for scannability"
+    ],
+    "concerns": [
+      "No 'Add to calendar' action on appointment cards — patients must manually add to personal calendar",
+      "Lab trend chart shows direction but not magnitude — users can't see how far out of range a value is",
+      "Medication refill request buried in detail view rather than surfaced on medication list row action"
     ]
   },
-  "security": [
-    "least privilege where relevant",
-    "sensitive data handling",
-    "safe API exposure",
-    "auditability for enterprise actions"
-  ],
+  "security": {
+    "findings": [
+      "All PHI (name, DOB, MRN, lab results, messages) transmitted exclusively over TLS 1.3",
+      "PHI encrypted at rest using AES-256; database columns individually encrypted",
+      "Session timeout enforced: 15-minute idle timeout, 4-hour absolute maximum",
+      "Re-authentication required before viewing lab results, sending messages, and downloading records",
+      "Audit logs capture every record view, message read, and download with timestamp and user identity",
+      "Role-based access enforced server-side: patients see own records only",
+      "No PHI in URLs, query parameters, or client-side analytics (verified by code audit)",
+      "CSP headers configured to block third-party scripts on all portal pages"
+    ],
+    "gaps": [
+      "Message attachments scanned for malware but not yet for PHI exfiltration patterns",
+      "Downloaded visit summaries are PDF with no digital rights management (can be forwarded without audit)"
+    ]
+  },
   "code_quality": {
     "tests": [
-      "component behavior",
-      "visual regression",
-      "accessibility scan",
-      "critical e2e journey"
+      "LabResultDetail: abnormal values render with correct ClinicalFlag variant and aria attributes",
+      "AppointmentCard: renders date, provider, location, and prep instructions from FHIR resource",
+      "MedicationList: interaction warning icon appears when drug-drug interaction data present",
+      "SessionTimeoutModal: countdown decrements, 'Extend' calls refresh endpoint, expiry navigates to login",
+      "MessageThread: send message creates FHIR Communication; error state preserves draft text",
+      "axe-core accessibility scan passes with zero violations on all portal routes",
+      "Visual regression test at 1024px and 375px breakpoints for all portal sections"
     ],
     "performance": [
-      "no avoidable layout shift",
-      "bounded rendering",
-      "optimized assets",
-      "responsive interaction latency"
+      "Portal shell LCP under 2.2s with patient header rendered from cached identity",
+      "Lab results table virtualized for patients with 100+ historical results",
+      "Medication list renders under 50ms for typical patient (5-15 medications)",
+      "Message list paginated at 20 conversations; thread messages paginated at 50 per page",
+      "No Cumulative Layout Shift — all card components have stable dimensions during data load"
     ],
     "maintainability": [
-      "no visual-only component names",
-      "no raw token drift",
-      "small reviewable modules",
-      "documented tradeoffs"
+      "Components named by clinical domain (LabResultsTable, MedicationList) not visual style",
+      "FHIR types defined in shared/infra/fhir-types.ts — no raw JSON parsing in feature code",
+      "Clinical design tokens referenced via CSS custom properties — zero raw hex in feature styles",
+      "Each domain module under 400 lines with documented FHIR resource dependencies"
     ]
   }
 }

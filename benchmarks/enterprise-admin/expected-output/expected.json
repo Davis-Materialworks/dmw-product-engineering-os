@@ -1,0 +1,14 @@
+{
+  "id": "enterprise-admin",
+  "title": "Enterprise Admin Console",
+  "industry": "Enterprise Admin",
+  "design_system": {
+    "tokens": ["admin.role.badge", "admin.danger.background", "surface.audit-log", "surface.permission-grid", "focus.ring"],
+    "typography": ["admin.section-heading", "admin.table-label", "admin.help-text", "admin.monospace-id"],
+    "modes": ["light", "high-contrast"]
+  },
+  "components": ["UserManagementTable", "PermissionMatrix", "DestructiveActionDialog"],
+  "accessibility": ["Permission grid keyboard navigable", "Bulk action selection count", "Destructive action confirmation", "Audit log accessible filtering", "Role badges not color-only"],
+  "architecture": { "frontend": ["admin feature module", "role-aware action registry"], "backend": ["users API", "roles API", "audit log API"], "security": ["least privilege", "audit logs", "tenant isolation"] },
+  "code_quality": { "typescript": "typed permission and role models", "tests": ["permission matrix", "bulk actions", "audit event", "axe scan"] }
+}

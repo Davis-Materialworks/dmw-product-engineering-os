@@ -1,0 +1,14 @@
+{
+  "id": "fintech",
+  "title": "Fintech Account and Transfer Flow",
+  "industry": "Fintech",
+  "design_system": {
+    "tokens": ["money.positive", "money.negative", "risk.warning", "risk.critical", "surface.secure-panel", "focus.ring"],
+    "typography": ["money.amount", "heading.flow", "body.legal", "caption.disclosure"],
+    "modes": ["light", "high-contrast"]
+  },
+  "components": ["SensitiveValue", "TransferWizard", "TransactionSearch"],
+  "accessibility": ["Risk warnings not color-only", "Amount labels with currency", "Transfer confirmation reviewable", "Session timeout explicit", "Masked value reveal controls"],
+  "architecture": { "frontend": ["flow state machine", "server-authoritative balances"], "backend": ["transfer intent API", "KYC status API", "audit event stream", "fraud checks"], "security": ["least privilege", "audit logging", "PII redaction", "secure defaults"] },
+  "code_quality": { "typescript": "branded money and account identifiers", "tests": ["transfer state machine", "accessibility scan", "idempotency", "risk warning"] }
+}

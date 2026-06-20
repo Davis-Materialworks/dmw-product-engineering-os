@@ -2,6 +2,12 @@
 
 This directory supports both reference benchmark definitions and the Benchmark Intelligence System.
 
+> **Note on Schema A benchmarks (01–10):** The numbered bootstrap benchmark projects
+> intentionally share the same `source_options` (input format, pipeline parameters, etc.)
+> across all Schema A benchmarks. This is by design — Schema A uses a uniform ingestion
+> pipeline, and per-benchmark variation lives in `benchmark.json` expected outputs, not in
+> source configuration.
+
 Phase 1 bootstrap projects use numbered directories:
 
 - `01-dashboard-saas`

@@ -1,10 +1,10 @@
-# Patterns
+# Core Patterns
 
-Root-level pattern documentation points to reusable product, UX, design-system, and architecture patterns.
+Pattern files live in `knowledge/patterns/`. This directory is preserved for future pattern recognition tooling.
 
-Use:
-
-- `core/patterns/` for canonical cross-agent pattern recognition.
-- `knowledge/patterns/` for design and product workflow patterns.
-- `knowledge/anti-patterns/` for known design and product failure patterns.
-- `knowledge/architecture-patterns/` for proven architecture patterns.
+Canonical locations:
+- Design patterns: `knowledge/patterns/`
+- Architecture patterns: `knowledge/architecture-patterns/`
+- Anti-patterns: `knowledge/anti-patterns/`
+- Success patterns: `knowledge/success-patterns/`
+- UX laws: `knowledge/ux-laws/`

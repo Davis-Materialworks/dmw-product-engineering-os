@@ -1,0 +1,14 @@
+{
+  "id": "ai-product",
+  "title": "AI Product Prompt Workspace",
+  "industry": "AI Products",
+  "design_system": {
+    "tokens": ["ai.prompt.surface", "ai.response.surface", "ai.citation.border", "usage.warning", "safety.warning", "focus.ring"],
+    "typography": ["prompt.input", "response.body", "citation.meta", "code.inline"],
+    "modes": ["light", "dark", "reduced-motion"]
+  },
+  "components": ["PromptComposer", "StreamingResponse", "CitationSidebar"],
+  "accessibility": ["Streaming output not overwhelm AT", "Stop generation keyboard reachable", "Model limits clear text", "Citation links descriptive names", "File upload states progress and errors"],
+  "architecture": { "frontend": ["stream-aware state", "file upload boundary"], "backend": ["generation API", "moderation/safety API", "retrieval citations", "usage metering"], "security": ["file type validation", "prompt injection warnings", "data retention"] },
+  "code_quality": { "typescript": "typed stream events and model capabilities", "tests": ["stream lifecycle", "stop generation", "file upload errors", "axe scan"] }
+}

@@ -1,0 +1,1 @@
+Legacy Schema B benchmark. The canonical numbered version is at `benchmarks/01-dashboard-saas/`. This directory is preserved for backward compatibility with `score_benchmarks.py`.

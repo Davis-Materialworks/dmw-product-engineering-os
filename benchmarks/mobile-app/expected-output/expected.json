@@ -1,0 +1,14 @@
+{
+  "id": "mobile-app",
+  "title": "Mobile Habit and Task App",
+  "industry": "Consumer Mobile",
+  "design_system": {
+    "tokens": ["safe-area.padding", "touch-target.minimum", "streak.active", "streak.missed", "surface.sheet", "motion.complete"],
+    "typography": ["mobile.heading", "mobile.body", "mobile.caption"],
+    "modes": ["light", "dark", "reduced-motion"]
+  },
+  "components": ["OnboardingPager", "HabitCompletionControl", "SettingsList"],
+  "accessibility": ["Gestures need non-gesture alternatives", "Touch targets meet minimums", "Animations respect reduced-motion", "Dynamic type no clipping", "Permission prompts clear value"],
+  "architecture": { "frontend": ["native navigation stack", "bottom tabs", "safe-area aware", "offline-first"], "backend": ["sync endpoint", "notification preferences", "account deletion"], "security": ["secure token storage", "privacy-preserving analytics", "deletion confirmation"] },
+  "code_quality": { "typescript": "typed navigation params and offline actions", "tests": ["component tests", "gesture fallback", "offline sync", "screen-reader labels"] }
+}
